@@ -1,0 +1,17 @@
+@import '_design_vars';
+
+html {
+   h1, h2, h3, h4, h5, h6, h7, p {
+      font-weight: 400;
+   }
+   body {
+      font-family: $PG-Bold;
+      overflow: hidden;
+      margin: 0px;
+      padding: 0px;
+      background-color: $med-gray;
+   }
+   .pos-relative {
+     position: relative;
+   }
+}

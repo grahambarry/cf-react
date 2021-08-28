@@ -1,7 +1,7 @@
 {
   "name": "cf-react",
   "version": "1.0.0",
-  "description": "",
+  "description": "Currency Fair Graham Barry",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --mode development",
@@ -12,10 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "recharts": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -23,6 +25,7 @@
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "dotenv": "^10.0.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
     "sass-loader": "^12.1.0",

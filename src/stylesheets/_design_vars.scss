@@ -1,0 +1,67 @@
+// VARIABLES
+
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+// Font Weight Import Loop
+$weights: 'Bold', 'Book', 'Medium';
+
+@each $weight in $weights {
+  @font-face {
+    font-family: 'PostGrotesk-#{$weight}';
+    src: url('../fonts/PostGrotesk-#{$weight}.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/PostGrotesk-#{$weight}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/PostGrotesk-#{$weight}.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/PostGrotesk-#{$weight}.woff') format('woff'), /* Pretty Modern Browsers */
+         url('../fonts/PostGrotesk-#{$weight}.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/PostGrotesk-#{$weight}.svg#svgFontName') format('svg'); /* Legacy iOS */
+  }
+}
+
+$font-family-1: 'Questrial', sans-serif;
+$font-family-2: 'Montserrat', sans-serif;
+$PG-Bold: 'PostGrotesk-Bold', sans-serif;
+$PG-Book: 'PostGrotesk-Book', sans-serif;
+$PG-Medium: 'PostGrotesk-Medium', sans-serif;
+
+// BREAK POINTS
+$breakpoint-small: 1000px;
+$breakpoint-phone: 480px;
+
+// COLOURS
+$gray-med-1: #616161;
+$gray-light: #9E9E9E;
+$amm-orange: #FFC766;
+$alt-blue: #64B5F6;
+$body-background: #fff;
+$black-gray: #212121;
+$panel-gray: #FBFBFB;
+$border-gray: #E0E0E0;
+$link-color: #6EC0E6;
+$nav-bg: #32323C;
+$med-gray: #F0F6F3;
+$light-gray: #F9F9F9;
+$bg-gray: #F0F5F2;
+$limebg: #B0F8F1;
+$limelite1: #CFFFFA;
+$limelite2: #B3FCF5;
+$litegreen: #AAEFE8;
+$midgreen: #7BE0BC;
+$navy-blue: #2B618A;
+$btn-border-radius: 4px;
+$input-border-color: transparent;
+$inputs-border: 1px solid $input-border-color;
+$gb-blue: #4A90E2;
+$amm-universal-light-gray:#979797;
+$amm-green:#27C088;
+$amm-red-warning-color:#F25757;
+$padding-12: 12px;
+
+// SHADOWS
+$box-shadow-1: 0 2px 7px 0 rgba(43, 97, 138, 0.12);
+
+// Widths
+$document-padding: 16%; // 228px as a percentage of 1440px
+$nav-height: 66px;
