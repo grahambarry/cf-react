@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from './components/shared/Navbar.js'
+import Navbar from "./components/shared/Navbar.js";
 import Transaction from "./pages/index.js";
 import "./App.scss";
 
