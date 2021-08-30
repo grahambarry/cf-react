@@ -4,7 +4,7 @@ import api from '../api/api.js'
 const IndexPage = () => {
     // Create state variables
     let [responseData, setResponseData] = React.useState('')
-    let [ticker, setTicker] = React.useState('')
+    let [base_code, setBaseCode] = React.useState('')
     let [message, setMessage] = React.useState('')
 
     // fetches stock data based on parameters
@@ -13,54 +13,38 @@ const IndexPage = () => {
 
         setMessage('Loading...')
 
-        // api.stockTimeSeries(ticker)
-        // .then((response)=>{
-        //    setResponseData(response.data)
-        //    setMessage('')
-        //    console.log(response)
-        // })
-        // .catch((error) => {
-        //    setMessage('Error')
-        //    console.log(error)
-        // })
+        api.getCurrencies(base_code)
+        .then((response)=>{
+           setResponseData(JSON.stringify(response.data.conversion_rates))
+           setMessage('')
+           console.log(JSON.stringify(response.data.conversion_rates))
+        })
+        .catch((error) => {
+           setMessage('Error')
+           console.log(error)
+        })
     }
-
     return (
-        <div
-            style={{
-                background: '#EEE',
-                padding: '5%',
-                fontFamily: '"Lucida Console", Monaco, monospace'
-            }}>
-            <h1
-                style={{
-                    background: 'black',
-                    color: 'white',
-                    padding: '1rem',
-                    display: 'inline-block'
-                }}>Gatsby Stock Market App</h1>
-            <h2>Analyze Stock Data</h2>
+        <div>
             <form onSubmit={fetchData}>
                 <fieldset>
                     <legend>Search Stock Market</legend>
-                    <label htmlFor="ticker">Enter stock ticker
+                    <label htmlFor="base_code">Enter Currency base_code
                         <input
                             required
-                            name="ticker"
-                            id="ticker"
+                            name="base_code"
+                            id="base_code"
                             type='text'
                             placeholder='SPY'
-                            value={ticker}
-                            onChange={(e) => setTicker(e.target.value)}
+                            value={base_code}
+                            onChange={(e) => setBaseCode(e.target.value)}
                         />
                     </label>
                     <button type='submit'>Submit</button>
                 </fieldset>
             </form>
             <p>{message}</p>
-            <h3>Symbol: {responseData ? responseData.symbol : ''}</h3>
-            <p>Daily Time Series with Splits and Dividend Events</p>
-            <small>Last Refresh: {responseData ? responseData.refreshed : ''}</small>
+            <p>{responseData}</p>
         </div>
     )
 }

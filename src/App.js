@@ -1,14 +1,15 @@
 import React from "react";
+import Navbar from './components/shared/Navbar.js'
 import Transaction from "./pages/index.js";
-import "./stylesheets/App.scss";
+import "./App.scss";
 
 export default class App extends React.Component {
   render(){
     return(
-        <div className='test'>
-            Hello World !
-            <Transaction />
-        </div>
+      <div className='body-wrapper'>
+        <Navbar />
+        <Transaction />
+      </div>
     )
   }
 }
