@@ -15,10 +15,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-react": "^7.14.5",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
-    "dotenv": "^10.0.0",
+    "dotenv-webpack": "^7.0.3",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
@@ -31,9 +33,7 @@
     "recharts": "^2.1.2",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
-    "webpack": "^5.51.1",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5"
+    "webpack": "^5.51.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",

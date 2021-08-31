@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://v6.exchangerate-api.com/v6/044666c7ddb71990e9c7ff99'
+  baseURL: 'https://v6.exchangerate-api.com/v6/' + `${process.env.REACT_APP_CURRENCY_API_KEY}`,
 });
 
 export default {
