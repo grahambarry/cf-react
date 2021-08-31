@@ -1,24 +1,19 @@
 const webpack = require('webpack')
 const path = require('path')
-const Dotenv = require('dotenv-webpack')
+require('dotenv').config({ path: './.env' }); 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'index.bundle.js',
-    publicPath: '/'
+    filename: 'index.bundle.js'
   },
   devServer: {
     historyApiFallback: true,
-    open: true,
     compress: true,
     hot: true,
     port: 8080,
-  },
-  resolve: {
-    extensions: ['*', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -67,7 +62,9 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
-    new Dotenv({ systemvars: true }),
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
+    }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
    }),
