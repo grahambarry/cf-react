@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import Navbar from "./components/shared/Navbar.js";
 import Transaction from "./pages/index.js";
 import "./app.scss";
@@ -13,11 +13,14 @@ function App() {
     <Router>
       <div className='body-wrapper'>
         <Navbar />
-        
         <Switch>
+          <Route exact path="/">
+              <Redirect to="/Transaction_info" />
+          </Route>
           <Route exact path="/Transaction_info" component={Step_1} />
           <Route path="/Recipient_info" component={Step_2} />
           <Route path="/Make_payment" component={Step_3} />
+          
         </Switch>
       </div>
     </Router>
