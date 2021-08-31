@@ -3,6 +3,7 @@ const path = require('path')
 // require('dotenv').config({ path: './.env' }); 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   output: {
@@ -70,6 +71,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
    }),
+   new CaseSensitivePathsPlugin(),
    new webpack.HotModuleReplacementPlugin()
   ]
 };
