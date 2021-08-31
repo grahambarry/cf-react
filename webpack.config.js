@@ -1,6 +1,5 @@
 const webpack = require('webpack')
 const path = require('path')
-const Dotenv = require('dotenv-webpack')
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -65,7 +64,6 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     }),
-    new Dotenv({ systemvars: true }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
    }),
