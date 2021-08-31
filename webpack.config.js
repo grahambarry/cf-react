@@ -5,7 +5,6 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'index.bundle.js'
@@ -36,13 +35,14 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
+        exclude: /node_modules/,
         use: [
           'style-loader',
           {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                  esModule: false,
-              },
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+                esModule: false,
+            },
           },
           'css-loader',
           'sass-loader'
@@ -50,6 +50,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'file-loader',
