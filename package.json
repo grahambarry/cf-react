@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Currency Fair Graham Barry",
   "main": "index.js",
+  "engines" : { "node" : "14.17.5" },
   "scripts": {
     "dev": "webpack serve --mode development",
     "start": "node server.js",
