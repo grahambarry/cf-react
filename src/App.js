@@ -4,9 +4,9 @@ import Navbar from "./components/shared/Navbar.js";
 import Transaction from "./pages/index.js";
 import "./app.scss";
 
-const Step_1 = () => <Transaction />;
-const Step_2 = () => <Transaction />;
-const Step_3 = () => <Transaction />;
+const Step_1 = () => <Transaction />
+const Step_2 = () => <Transaction />
+const Step_3 = () => <Transaction />
 
 class App extends React.Component {
   render() {
@@ -18,7 +18,7 @@ class App extends React.Component {
             <Route exact path="/">
                 <Redirect to="/Transaction_info" />
             </Route>
-            <Route exact path="/Transaction_info" component={Step_1} />
+            <Route path="/Transaction_info" component={Step_1} />
             <Route path="/Recipient_info" component={Step_2} />
             <Route path="/Make_payment" component={Step_3} />
             

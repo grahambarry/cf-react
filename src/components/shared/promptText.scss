@@ -1,0 +1,22 @@
+@import '../../stylesheets/placeholders/flex-helpers.scss';
+@import '../../stylesheets/design_vars.scss';
+.column {
+  margin-top: 41px;
+  @extend %amm-flex-column;
+}
+.line-1, .line-2 {
+  line-height: 27px;
+}
+.line-1 {
+  font-family: $PG-Medium;
+  font-size: 18px;
+  color: $black-gray;
+}
+.line-2 {
+  font-family: $PG-Book;
+  font-size: 14px;
+  color: #757575;
+}
+@media screen and (max-width: $breakpoint-small) {
+
+}

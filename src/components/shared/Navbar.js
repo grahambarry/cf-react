@@ -23,13 +23,6 @@ const Navbar = () => {
             Sign out
           </a>
         </li>
-        <li className="nav-item signin-but">
-          {/* <router-link
-            to="{ name: 'sign_up' }"
-            className="nav-link">
-            Sign up
-          </router-link> */}
-        </li>
       </ul>
     </div>
     <div className="spacer-20">

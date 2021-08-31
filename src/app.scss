@@ -1,17 +1,30 @@
 @import './stylesheets/placeholders/flex-helpers.scss';
 @import './stylesheets/design_vars.scss';
 html {
-   h1, h2, h3, h4, h5, h6, h7, p {
-      font-weight: 400;
-   }
-   body {
-      font-family: $PG-Bold;
-      overflow: hidden;
-      margin: 0px;
-      padding: 0px;
-      background-color: $med-gray;
-   }
-   .pos-relative {
-     position: relative;
-   }
+  h1, h2, h3, h4, h5, h6, h7, p {
+    font-weight: 400;
+  }
+  body {
+    font-family: $PG-Bold;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    background-color: $med-gray;
+  }
+  .pos-relative {
+    position: relative;
+  }
+  .main-container {
+    z-index: 3;
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition-duration: 0.6s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+  .fade-enter,
+  .fade-leave-active {
+    opacity: 0
+  }
 }

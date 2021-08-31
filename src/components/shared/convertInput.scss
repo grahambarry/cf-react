@@ -1,0 +1,51 @@
+@import '../../stylesheets/placeholders/flex-helpers.scss';
+@import '../../stylesheets/design_vars.scss';
+
+.cs-container {
+  @extend %amm-flex-row;
+  align-items: center;
+  width: 100%;
+  height: 98px;
+  padding: 0px 25px;
+  .label {
+    font-family: $PG-Medium;
+    font-size: 14px;
+    line-height: 28px;
+  }
+  &.from {
+    border-radius: 4px 4px 0px 0px;
+    background-color: #FAFDFE;
+    border: 1px solid $link-color;
+    .label {
+      color: $link-color;
+    }
+  }
+  &.to {
+    border-radius: 0px 0px 4px 4px;
+    background-color: #fff;
+    border: 1px solid #E6E6E6;
+    border-top: 1px solid transparent;
+    .label {
+      color: #9E9E9E;
+    }
+  }
+  .align-end {
+    margin-left: auto;
+  }
+  .input-col {
+    @extend %amm-flex-column;
+  }
+  .input-row {
+    @extend %amm-flex-row;
+    align-items: center;
+    line-height: 38px;
+    font-size: 28px;
+    font-family: $PG-Medium;
+  }
+  .symbol {
+    width: 28px;
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: $breakpoint-small) {
+}

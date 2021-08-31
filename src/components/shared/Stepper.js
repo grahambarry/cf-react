@@ -3,7 +3,7 @@ import memoize from 'lodash/memoize'
 import './stepper.scss'
 import Step from './Step.js'
 
-class Stepper extends React.Component {
+export default class Stepper extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -30,5 +30,3 @@ class Stepper extends React.Component {
     )
   }
 }
-
-export default Stepper

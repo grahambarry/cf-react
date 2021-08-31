@@ -52,15 +52,15 @@ body {
   }
 }
 @media screen and (max-width: $breakpoint-small) {
-  .media-sm {
-    display: flex;
-    margin-bottom: 17px;
-  }
-  .media-lg {
-    display: none !important;
-  }
   .container {
     flex-flow: column nowrap !important;
+    .media-sm {
+      display: flex;
+      margin-bottom: 17px;
+    }
+    .media-lg {
+      display: none !important;
+    }
     .wrap-phone {
       padding-left: 17px;
       padding-right: 17px;
