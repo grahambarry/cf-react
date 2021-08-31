@@ -1,7 +1,8 @@
 import React from 'react'
-import './Navbar.scss'
+import './navbar.scss'
 import logo from '../../assets/currency_fair_logo.svg'
 import signOutIcon from '../../assets/sign-out-icon.svg'
+
 
 const Navbar = () => {
   return (

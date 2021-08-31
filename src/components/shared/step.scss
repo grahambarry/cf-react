@@ -1,0 +1,45 @@
+@import '../../stylesheets/placeholders/flex-helpers.scss';
+@import '../../stylesheets/design_vars.scss';
+li.step-item {
+  position: relative;
+  box-sizing: border-box;
+  height: 58px;
+  list-style: none;
+  display:inline-block;
+  padding:0;
+  padding-left: 44px;
+  .nav-link {
+    color: #B0BEC5;
+    font-family: $PG-Medium;
+    font-size: 12px;
+    line-height: 21px;
+    text-decoration: none;
+    display: block;
+    span {
+      font-size: 14px;
+      display: block;
+      white-space: nowrap;
+    }
+  }
+  .active-line {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: transparent;
+    z-index: 2;
+  }
+  .nav-link.is-active {
+    color: $link-color;
+    .active-line {
+      background-color: $link-color;
+    }
+  }
+}
+@media screen and (max-width: $breakpoint-small) {
+  li.step-item {
+    padding-left: 12px;
+  }
+}

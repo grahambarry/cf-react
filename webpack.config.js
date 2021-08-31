@@ -6,8 +6,19 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'index.bundle.js'
+    path: path.resolve(__dirname, './dist'),
+    filename: 'index.bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true,
+    open: true,
+    compress: true,
+    hot: true,
+    port: 8080,
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -59,6 +70,7 @@ module.exports = {
     new Dotenv({ systemvars: true }),
     new MiniCssExtractPlugin({
       filename: 'bundle.css'
-   })
+   }),
+   new webpack.HotModuleReplacementPlugin()
   ]
 };

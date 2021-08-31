@@ -1,0 +1,88 @@
+@import '../stylesheets/placeholders/flex-helpers.scss';
+@import '../stylesheets/design_vars.scss';
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+.overflow-x {
+  overflow-x: auto;
+}
+.container {
+  box-sizing: border-box;
+  position: absolute;
+  background-color: $body-background;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  @extend %amm-flex-row;
+  .left {
+    box-sizing: border-box;
+    flex-basis: 59%; // 845px as percentage of 1440px
+    padding: ($nav-height + 54px) 53px 225px $document-padding;
+    z-index: 2;
+  }
+  .right {
+    position: relative;
+    box-sizing: border-box;
+    flex-basis: 41%; // 595px as percentage of 1440px
+    .fixed-panel {
+      position: fixed;
+      top: 0px;
+      box-sizing: border-box;
+      background: $panel-gray;
+      border-left: 1px solid $border-gray;
+      height: 100vh;
+      width: 100%;
+      padding-top: $nav-height;
+    }
+  }
+  .cf-button {
+    margin-top: 36px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .media-sm {
+    display: none;
+  }
+}
+@media screen and (max-width: $breakpoint-small) {
+  .media-sm {
+    display: flex;
+    margin-bottom: 17px;
+  }
+  .media-lg {
+    display: none !important;
+  }
+  .container {
+    flex-flow: column nowrap !important;
+    .wrap-phone {
+      padding-left: 17px;
+      padding-right: 17px;
+    }
+    .right {
+      .fixed-panel {
+        position: relative;
+        padding-top: 0px;
+        background-color: transparent;
+        border-left: none;
+        height: auto;
+      }
+    }
+    .left {
+      padding-bottom: 54px;
+      padding-top: $nav-height + 12px;
+    }
+    .left, .right {
+      width: 100%;
+      flex-basis: 100%;
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+  }
+}
