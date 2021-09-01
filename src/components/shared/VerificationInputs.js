@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import _ from 'lodash'
 import './verificationInputs.scss'
 import iconRefresh from '../../assets/icon-refresh.svg'
@@ -10,39 +10,37 @@ export default class VerificationInputs extends React.Component {
     this.state = {    
       digits: 6,
       currentIndex: 0,
+      code: []
     }
   }
   render() {
-    let verificationCode = 
-      new Array(this.props.digits ? this.props.digits : this.state.digits).fill(undefined)
+    let numDigits = this.props.digits ? this.props.digits : this.state.digits
+    const verificationCode = new Array(numDigits).fill(undefined)
+    let inputRefs = []
 
     const focusNext = (e, index) => {
-      console.log('FocusNext Hit ')
       let val = e.target.value
-      index < this.digits ? process.nextTick(() => this.$refs.input[index].focus()) : ''
+      index < numDigits - 1 ? inputRefs[index + 1].current.focus() : ''
       pushDigitValue(index, val )
     }
     const clearValue = (e, index) => {
-      console.log('e target ' + e.target.value + e.target)
       e.target.value = ''
       pushDigitValue(index, '' )
     }
     const pushDigitValue = (index, value) => {
-      console.log('this.verificationCode ' + verificationCode)
-      verificationCode[index] = value
-      if (verificationCode.findIndex(e => (e === undefined || e === "")) > -1) {
-        emitDisable()
+      this.state.code[index] = value
+      if (this.state.code.findIndex(e => (e === undefined || e === "")) > -1) {
+        handleDisable()
       } else {
-        emitCode()
+        handleVerificationCode(this.state.code)
       }
     }
-    const emitCode = () => {
-      console.log('this.verificationCode ' + verificationCode)
-      // this.$emit('emittedCode', this.verificationCode)
+    const handleVerificationCode = (code) => {
+      let codeString = code.join("")
+      this.props.onEmitCode(codeString)
     }
-    const emitDisable = () => {
-      console.log('this.verificationCode ' + verificationCode)
-      // this.$emit('disable')
+    const handleDisable = () => {
+      this.props.onDisable()
     }
     return (
       <div className="wrapper">
@@ -56,16 +54,23 @@ export default class VerificationInputs extends React.Component {
           </div>
         </div>
         <div className="inputs-row">
-          {[...verificationCode].map((x, index) =>
-            <input key={index} 
-                   ref={index} 
-                   maxLength="1"
-                   type="tel"
-                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                   required
-                   onFocus={(e) => clearValue(e, index)}
-                   onInput={(e) => focusNext(e, index)}/>
-          )}
+          {
+            [...verificationCode].map((x, index) => {
+              let inputRef = React.createRef();
+              inputRefs.push(inputRef);
+              return (
+                <input key={index} 
+                       ref={inputRef}
+                       maxLength="1"
+                       type="tel"
+                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                       required
+                       className="digit-input"
+                       onFocus={(e) => clearValue(e, index)}
+                       onInput={(e) => focusNext(e, index)}/>
+              )
+            })
+          }
         </div>
         <div className="alt-actions">
           <div className="action">

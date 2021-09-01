@@ -13,13 +13,15 @@ export default class VerificationModal extends React.Component {
       canVerify: false,
       showModal: false
     }
-    console.log(this.props.showModal)
+  };
+  handleVerificationCode = (code) => {
+    this.setState({canVerify: true})
+    console.log('The Code is ' + code);
+  }
+  handleDisable = () => {
+    this.setState({canVerify: false})
   }
   render() {
-
-    const handleVerificationCode = (emittedCode) => {
-      this.state.canVerify = true
-    }
 
     return (
       <Modal showModal={this.props.showModal}
@@ -37,20 +39,18 @@ export default class VerificationModal extends React.Component {
             </div>
           </div>
         </Modal.Header>
-
         <Modal.Body>
           <div className="body-container">
-            <VerificationInputs disable="canVerify = false"
-                                emittedCode="handleVerificationCode"/>
+            <VerificationInputs onDisable={this.handleDisable}
+                                onEmitCode={this.handleVerificationCode}/>
           </div>
         </Modal.Body>
-
         <Modal.Footer>
           <div className="actions-container">
             <div className="buttons-wrap">
               <CfButton label="Verify Identity"
                         disabled={!this.state.canVerify}
-                        click="$emit('close')"/>
+                        onClick={(event) => this.props.onCloseModal(event)}/>
               <CfButton label="Cancel"
                         secondary
                         className="but-2"
