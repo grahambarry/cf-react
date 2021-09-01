@@ -52,7 +52,7 @@ export default {
   methods: {
     focusNext(index) {
       let val = event.target.value
-      index < this.digits ? this.$nextTick(() => input[index].focus()) : ''
+      index < this.digits ? this.$nextTick(() => this.$refs.input[index].focus()) : ''
       this.pushDigitValue(index, val )
     },
     clearValue(index) {

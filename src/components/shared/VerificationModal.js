@@ -16,6 +16,11 @@ export default class VerificationModal extends React.Component {
     console.log(this.props.showModal)
   }
   render() {
+
+    const handleVerificationCode = (emittedCode) => {
+      this.state.canVerify = true
+    }
+
     return (
       <Modal showModal={this.props.showModal}
              width="580px"
