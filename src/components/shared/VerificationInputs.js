@@ -1,14 +1,82 @@
 import React from 'react'
+import _ from 'lodash'
 import './verificationInputs.scss'
+import iconRefresh from '../../assets/icon-refresh.svg'
+import iconPhone from '../../assets/icon-phone.svg'
 
 export default class VerificationInputs extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {    
+      digits: 6,
+      currentIndex: 0,
+    }
   }
-  render() { 
-    return (
-      <div>
+  render() {
+    let verificationCode = 
+      new Array(this.props.digits ? this.props.digits : this.state.digits).fill(undefined)
 
+    const focusNext = (e, index) => {
+      console.log('FocusNext Hit ')
+      let val = e.target.value
+      index < this.digits ? process.nextTick(() => this.$refs.input[index].focus()) : ''
+      pushDigitValue(index, val )
+    }
+    const clearValue = (e, index) => {
+      console.log('e target ' + e.target.value + e.target)
+      e.target.value = ''
+      pushDigitValue(index, '' )
+    }
+    const pushDigitValue = (index, value) => {
+      console.log('this.verificationCode ' + verificationCode)
+      verificationCode[index] = value
+      if (verificationCode.findIndex(e => (e === undefined || e === "")) > -1) {
+        emitDisable()
+      } else {
+        emitCode()
+      }
+    }
+    const emitCode = () => {
+      console.log('this.verificationCode ' + verificationCode)
+      // this.$emit('emittedCode', this.verificationCode)
+    }
+    const emitDisable = () => {
+      console.log('this.verificationCode ' + verificationCode)
+      // this.$emit('disable')
+    }
+    return (
+      <div className="wrapper">
+        <div className="phone-row">
+          <div className="text">
+            Enter the code sent via SMS to
+            <div className="phone-wrapper">
+              <span className="phone code">+353</span>
+              <span className="phone number">872251177</span>
+            </div>
+          </div>
+        </div>
+        <div className="inputs-row">
+          {[...verificationCode].map((x, index) =>
+            <input key={index} 
+                   ref={index} 
+                   maxLength="1"
+                   type="tel"
+                   pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                   required
+                   onFocus={(e) => clearValue(e, index)}
+                   onInput={(e) => focusNext(e, index)}/>
+          )}
+        </div>
+        <div className="alt-actions">
+          <div className="action">
+            <img src={iconRefresh} className="icon"/>
+            Receive a new code
+          </div>
+          <div className="action">
+            <img src={iconPhone} className="icon"/>
+            Receive code via call instead
+          </div>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import './verificationModal.scss'
+import VerificationInputs from './VerificationInputs.js'
 import CfButton from './CfButton.js'
 import iconLock from '../../assets/icon-lock.svg';
 import { NavLink } from "react-router-dom";
@@ -34,8 +35,8 @@ export default class VerificationModal extends React.Component {
 
         <Modal.Body>
           <div className="body-container">
-            {/* <VerificationInputs disable="canVerify = false"
-                                emittedCode="handleVerificationCode"/> */}
+            <VerificationInputs disable="canVerify = false"
+                                emittedCode="handleVerificationCode"/>
           </div>
         </Modal.Body>
 
