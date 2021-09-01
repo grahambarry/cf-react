@@ -4,7 +4,14 @@
 .modal-bg {
   position: fixed;
   z-index: 20;
-  @extend %amm-flex-column;
+  box-sizing:border-box;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow:column nowrap;
   justify-content: center;
   align-items: center;
   width: 100vw;
@@ -12,6 +19,45 @@
   overflow-x: hidden;
   overflow-y: auto;
   background: rgba(0, 0, 0, 0.75);
+  display: none;
+  opacity: 0;
+  transition-duration: 0.6s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+  &.fade-enter {
+    display: flex;
+    opacity: 0;
+  }
+  &.fade-enter.fade-enter-active {
+    display: flex;
+    opacity: 1;
+    transition-duration: 0.6s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+  &.fade-appear-done, .fade-enter-done {
+    display: flex;
+    opacity: 1;
+  }
+  &.fade-enter-done {
+    display: flex;
+    opacity: 1;
+  }
+  &.fade-exit {
+    display: flex;
+    opacity: 1;
+  }
+  &.fade-exit.fade-exit-active {
+    display: flex;
+    opacity: 0;
+    transition-duration: 0.6s;
+    transition-property: opacity;
+    transition-timing-function: ease;
+  }
+  &.fade-exit-done {
+    opacity: 0;
+    display: none;
+  }
 }
 .modal-panel {
   z-index: 21;
@@ -23,6 +69,9 @@
   border-radius: 4px;
   overflow: hidden;
   border: 1px solid $border-gray;
+  header, main, footer {
+    width: 100%;
+  }
 }
 @media screen and (max-width: $breakpoint-small) {
   .modal-panel {

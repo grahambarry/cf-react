@@ -6,6 +6,7 @@ import PromptText from '../components/shared/PromptText.js'
 import Footer from '../components/shared/Footer.js'
 import SummaryPanel from '../components/shared/SummaryPanel.js'
 import CfButton from '../components/shared/CfButton.js'
+import VerificationModal from '../components/shared/VerificationModal.js'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -36,6 +37,11 @@ class IndexPage extends React.Component {
     event.preventDefault();
     this.setState({showModal: true});
     console.log("MODAL >>>>> " + this.state.showModal)
+  };
+  handleCloseModal = (event) => {
+    event.preventDefault();
+    this.setState({showModal: false});
+    console.log("MODAL CLOSE>>>>> " + this.state.showModal)
   };
   componentDidMount() {
     const fetchData = (e) => {
@@ -111,9 +117,8 @@ class IndexPage extends React.Component {
             </div>
           </div>
         </div>
-
-        {/* <VerificationModal show="showModal"
-                        close="closeModal"/> */}
+          <VerificationModal showModal={this.state.showModal}
+                             onCloseModal={this.handleCloseModal}/>
       </div>
     )
   }
