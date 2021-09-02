@@ -28,7 +28,7 @@ li.step-item {
     height: 4px;
     width: 100%;
     border-radius: 2px;
-    background-color: transparent;
+    background-color: #E2F2FA;
     z-index: 2;
   }
   .nav-link.is-active {
@@ -41,5 +41,12 @@ li.step-item {
 @media screen and (max-width: $breakpoint-small) {
   li.step-item {
     padding-left: 12px;
+    .nav-link {
+      span {
+        font-size: 16px;
+        display: block;
+        white-space: nowrap;
+      }
+    }
   }
 }

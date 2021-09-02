@@ -50,7 +50,7 @@ class IndexPage extends React.Component {
     if (val.fromTo === 'from') {
       this.setState({currency1: val.currency})
       this.setState({value1: val.value})
-      // this.setState({value2: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
+      this.setState({value2: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
       // this.state.currency1 = val.currency
       // this.state.value1 = val.value
       // this.state.value2 = (val.value * this.getRate(this.state.currency1)).toFixed(2)
@@ -58,7 +58,7 @@ class IndexPage extends React.Component {
     else {
       this.setState({currency2: val.currency})
       this.setState({value2: val.value})
-      // this.setState({value1: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
+      this.setState({value1: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
 
       // this.state.currency2 = val.currency
       // this.state.value2 = val.value
@@ -80,7 +80,6 @@ class IndexPage extends React.Component {
     .then((response) => {
       this.setState({currencies: JSON.stringify(response.data.conversion_rates)});
       this.setState({loading: false});
-      console.log('CURR ' + this.state.currencies)
     })
     .catch((error) => {
       this.setState({loading: true});

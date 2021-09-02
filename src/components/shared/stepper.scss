@@ -13,12 +13,24 @@ ul.stepper-container {
   padding: 0px;
   margin: 0px;
   display:inline;
+  .wrapper {
+    position: relative;
+    height: 58px;
+    min-width: 100%;
+    width: auto;
+    @extend %amm-flex-row;
+    justify-content: space-between;
+    padding: 0px;
+    margin: 0px;
+    display:inline;
+  }
   .line-background {
     position: absolute;
     left: 0px;
     bottom: 0px;
+    right: 0px;
     height: 4px;
-    width: 100%;
+    min-width: 100%;
     border-radius: 2px;
     background-color: #E2F2FA;
   }

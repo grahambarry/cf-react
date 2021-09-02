@@ -24,6 +24,7 @@ export default class ConvertInput extends React.Component {
     return status
   }
   handleChange = (key) => (value) => {
+    this.setState({myValue: value})
     this.handleInputs(value)
   };
   handleSelect = (key) => {
@@ -31,7 +32,7 @@ export default class ConvertInput extends React.Component {
     let sym = ''
     if (SymbolLUT[key].symbol_native != undefined) sym = SymbolLUT[key].symbol_native
     this.setState({mySymbol: sym})
-    this.handleInputs()
+    this.handleInputs(this.state.myValue)
   }
   handleInputs = (value) => {
     let inputValues = {fromTo: this.fromTo(), currency: this.state.myCurrency, value: value}
