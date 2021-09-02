@@ -10,6 +10,7 @@ export default class ConvertInput extends React.Component {
     super(props);
     this.state = {
       myCurrency: this.props.currency,
+      myValue: this.props.value,
       mySymbol: SymbolLUT[this.props.currency].symbol_native,
     }
   }
@@ -25,15 +26,16 @@ export default class ConvertInput extends React.Component {
   handleChange = (key) => (value) => {
     this.handleInputs(value)
   };
-  // emitCurrency = (val) => {
-  //   this.state.myCurrency = val
-  //   this.state.mySymbol = SymbolLUT[val].symbol_native
-  //   this.handleInputs()
-  // }
+  handleSelect = (key) => {
+    this.setState({myCurrency: key})
+    let sym = ''
+    if (SymbolLUT[key].symbol_native != undefined) sym = SymbolLUT[key].symbol_native
+    this.setState({mySymbol: sym})
+    this.handleInputs()
+  }
   handleInputs = (value) => {
     let inputValues = {fromTo: this.fromTo(), currency: this.state.myCurrency, value: value}
     this.props.emittedValues(inputValues)
-    // console.log('emittedValues', {fromTo: this.fromTo(), currency: this.state.myCurrency, value: this.state.myValue})
   }
   render() { 
     return (
@@ -57,7 +59,7 @@ export default class ConvertInput extends React.Component {
         </div>
         <CurrencySelect currency={ this.state.myCurrency }
                         currencies={ this.props.currencies }
-                        select="emitCurrency"/>
+                        onSelect={ this.handleSelect }/>
       </div>
     )
   }

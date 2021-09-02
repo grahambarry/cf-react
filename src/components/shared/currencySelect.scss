@@ -18,7 +18,13 @@
     min-width: 21px;
     min-height: 21px;
     border-radius: 50%;
+    overflow: hidden;
     background-position: center;
+    img {
+      object-fit: cover;
+      height: 21px;
+      transform: translateX(-5px);
+    }
   }
   .label {
     margin-left: 9px;

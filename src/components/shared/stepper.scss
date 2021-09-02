@@ -9,6 +9,7 @@ ul.stepper-container {
   height: 58px;
   width: 100%;
   @extend %amm-flex-row;
+  justify-content: space-between;
   padding: 0px;
   margin: 0px;
   display:inline;

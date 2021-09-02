@@ -50,7 +50,7 @@ class IndexPage extends React.Component {
     if (val.fromTo === 'from') {
       this.setState({currency1: val.currency})
       this.setState({value1: val.value})
-      this.setState({value2: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
+      // this.setState({value2: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
       // this.state.currency1 = val.currency
       // this.state.value1 = val.value
       // this.state.value2 = (val.value * this.getRate(this.state.currency1)).toFixed(2)
@@ -58,7 +58,7 @@ class IndexPage extends React.Component {
     else {
       this.setState({currency2: val.currency})
       this.setState({value2: val.value})
-      this.setState({value1: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
+      // this.setState({value1: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
 
       // this.state.currency2 = val.currency
       // this.state.value2 = val.value
@@ -99,12 +99,12 @@ class IndexPage extends React.Component {
             </div> */}
 
             {!this.state.loading && <Converter v-if="!loading"
-                                              value1={ this.state.value1 }
-                                              value2={ this.state.value2 }
-                                              currencies={ this.state.currencies }
-                                              currency1={ this.state.currency1 }
-                                              currency2={ this.state.currency2 }
-                                              emittedValues={this.handleInputs}/>
+                                               value1={ this.state.value1 }
+                                               value2={ this.state.value2 }
+                                               currencies={ this.state.currencies }
+                                               currency1={ this.state.currency1 }
+                                               currency2={ this.state.currency2 }
+                                               emittedValues={this.handleInputs}/>
             }
 
             <CfButton label="Next"
