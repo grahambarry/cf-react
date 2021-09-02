@@ -7,7 +7,7 @@ var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 
 module.exports = {
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'index.bundle.js',
     publicPath: '/'
   },
@@ -43,7 +43,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-                esModule: false,
+                esModule: false
             },
           },
           'css-loader',
@@ -53,11 +53,7 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        loader: 'file-loader',
       }
     ]
   },

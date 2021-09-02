@@ -19,6 +19,7 @@ $weights: 'Bold', 'Book', 'Medium';
          url('~/src/fonts/PostGrotesk-#{$weight}.svg#svgFontName') format('svg'); /* Legacy iOS */
   }
 }
+.currency-flag.currency-flag-bgn{background :url('~/src/currency_flags/aed.png');}
 
 $font-family-1: 'Questrial', sans-serif;
 $font-family-2: 'Montserrat', sans-serif;

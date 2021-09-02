@@ -25,8 +25,8 @@ class IndexPage extends React.Component {
       ],
       showModal: false,
       currencies: null,
-      value1: '',
-      value2: '',
+      value1: '0',
+      value2: '0',
       currency1: 'EUR',
       currency2: 'USD',
       rate: null,
@@ -87,7 +87,6 @@ class IndexPage extends React.Component {
       console.log(error)
     })
   };
-
   render () {
     return (
       <div className="container">
@@ -98,13 +97,15 @@ class IndexPage extends React.Component {
                         promptB="Specify the amount to be sent or received."/>
             {/* <div v-if="loading">Loading...
             </div> */}
-            <Converter v-if="!loading"
-                       value1={ this.state.value1 }
-                       value2={ this.state.value2 }
-                       currencies={ this.state.currencies }
-                       currency1={ this.state.currency1 }
-                       currency2={ this.state.currency2 }
-                       emittedValues={this.handleInputs}/>
+
+            {!this.state.loading && <Converter v-if="!loading"
+                                              value1={ this.state.value1 }
+                                              value2={ this.state.value2 }
+                                              currencies={ this.state.currencies }
+                                              currency1={ this.state.currency1 }
+                                              currency2={ this.state.currency2 }
+                                              emittedValues={this.handleInputs}/>
+            }
 
             <CfButton label="Next"
                       route="Transaction_info"

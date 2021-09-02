@@ -10,6 +10,17 @@
     background-color: transparent;
     border-radius: $btn-border-radius;
     border: none;
+    position: relative;
+    .text-danger {
+      font-size: 11px;
+      position: absolute;
+      color: $amm-red-warning-color;
+      white-space: nowrap;
+      white-space: nowrap;
+      left: 0px;
+      line-height: 13px;
+      bottom: -11px;
+    }
     .is-clear & {
       border-color: transparent;
       .input {

@@ -10,7 +10,7 @@ export default class ConvertInput extends React.Component {
     super(props);
     this.state = {
       myCurrency: this.props.currency,
-      mySymbol: this.props.symbol,
+      mySymbol: SymbolLUT[this.props.currency].symbol_native,
     }
   }
   label() {
@@ -55,11 +55,9 @@ export default class ConvertInput extends React.Component {
                 onChange={this.handleChange('text')}/>
           </div>
         </div>
-        {/* <CurrencySelect currency={ this.props.myCurrency }
+        <CurrencySelect currency={ this.state.myCurrency }
                         currencies={ this.props.currencies }
-                        v-on="$listeners"
-                        className="align-end"
-                        select="emitCurrency"/> */}
+                        select="emitCurrency"/>
       </div>
     )
   }
