@@ -1,10 +1,23 @@
 import React from 'react'
+import SymbolLUT from '../json/currency_symbols.json'
 import iconQ from '../../assets/icon-q.svg'
 import './summaryPanel.scss'
 
 export default class SummaryPanel extends React.Component {
   constructor(props) {
     super(props);
+  }
+  sends = () => {
+    let key = this.props.currency1
+    let sym = ""
+    if (SymbolLUT[key].symbol_native != undefined) sym = SymbolLUT[key].symbol_native
+    return sym + this.props.youSend
+  }
+  gets = () => {
+    let key = this.props.currency2
+    let sym = ""
+    if (SymbolLUT[key].symbol_native != undefined) sym = SymbolLUT[key].symbol_native
+    return sym + this.props.recipientGets
   }
   render() { 
     return (
@@ -17,7 +30,7 @@ export default class SummaryPanel extends React.Component {
             You Send
           </div>
           <div className="font-pgm">
-            $2000.00
+            { this.sends() }
           </div>
         </div>
         <div className="strip gray-bg padding-1 gray-med-1 font-pgm font-size-14 lh-24">
@@ -32,7 +45,9 @@ export default class SummaryPanel extends React.Component {
         <div className="summary-details">
           <div className="sub-row">
             <div className="row-label">Rate</div>
-            <div className="row-value">0.86022</div>
+            <div className="row-value">
+              { this.props.rate }
+            </div>
           </div>
           <div className="sub-row">
             <div className="row-label">Fee</div>
@@ -44,7 +59,9 @@ export default class SummaryPanel extends React.Component {
           </div>
           <div className="sub-row">
             <div className="row-label">Recipient gets</div>
-            <div className="row-value gray-med-1">£1717.94</div>
+            <div className="row-value gray-med-1">
+              { this.gets() }
+            </div>
           </div>
         </div>
         <div className="font-pgm justify-center font-size-12 lh-28 amm-orange strip border-alt">

@@ -44,30 +44,30 @@ class IndexPage extends React.Component {
     event.preventDefault();
     this.setState({showModal: false});
   };
-
+  setBaseCurrency = (val) => {
+    this.setState({value1: val.value})
+    this.setState({value2: (val.value * this.getRate(this.state.currency2)).toFixed(2)})
+  }
   handleInputs = (val) => {
-    console.log('In Index ' + JSON.stringify(val))
     if (val.fromTo === 'from') {
       this.setState({currency1: val.currency})
-      this.setState({value1: val.value})
-      this.setState({value2: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
-      // this.state.currency1 = val.currency
-      // this.state.value1 = val.value
-      // this.state.value2 = (val.value * this.getRate(this.state.currency1)).toFixed(2)
+      if (val.currency != this.state.currency1) {
+        this.fetchData(val.currency)
+        setTimeout(() => { this.setBaseCurrency(val) }, 300);
+      } else {
+        this.setBaseCurrency(val)
+      }
     }
     else {
       this.setState({currency2: val.currency})
       this.setState({value2: val.value})
-      this.setState({value1: (val.value * this.getRate(this.state.currency1)).toFixed(2)})
-
-      // this.state.currency2 = val.currency
-      // this.state.value2 = val.value
-      // this.state.value1 = (val.value * this.getRate(this.state.currency1)).toFixed(2)
+      this.setState({value1: (val.value / this.getRate(this.state.currency2)).toFixed(2)})
     }
   };
 
   getRate = (currency) => {
-    let rate = this.state.currencies[currency]
+    let rate = JSON.parse(this.state.currencies)[currency]
+    this.setState({rate: rate})
     return rate
   }
 
@@ -78,7 +78,8 @@ class IndexPage extends React.Component {
   fetchData = (base_code) => {
     api.getCurrencies(base_code)
     .then((response) => {
-      this.setState({currencies: JSON.stringify(response.data.conversion_rates)});
+      let parsed = JSON.stringify(response.data.conversion_rates)
+      this.setState({currencies: parsed});
       this.setState({loading: false});
     })
     .catch((error) => {
@@ -94,17 +95,14 @@ class IndexPage extends React.Component {
           <div className="wrap-phone">
             <PromptText promptA="Let’s set up your transaction!"
                         promptB="Specify the amount to be sent or received."/>
-            {/* <div v-if="loading">Loading...
-            </div> */}
 
-            {!this.state.loading && <Converter v-if="!loading"
-                                               value1={ this.state.value1 }
-                                               value2={ this.state.value2 }
-                                               currencies={ this.state.currencies }
-                                               currency1={ this.state.currency1 }
-                                               currency2={ this.state.currency2 }
-                                               emittedValues={this.handleInputs}/>
-            }
+            <Converter loading={this.state.loading}
+                       value1={ this.state.value1 }
+                       value2={ this.state.value2 }
+                       currencies={ this.state.currencies }
+                       currency1={ this.state.currency1 }
+                       currency2={ this.state.currency2 }
+                       emittedValues={this.handleInputs}/>
 
             <CfButton label="Next"
                       route="Transaction_info"
@@ -115,7 +113,11 @@ class IndexPage extends React.Component {
         <div className="right">
           <div className="wrap-phone">
             <div className="fixed-panel">
-              <SummaryPanel/>
+              <SummaryPanel rate={this.state.rate}
+                            currency1={ this.state.currency1 }
+                            currency2={ this.state.currency2 }
+                            youSend={this.state.value1}
+                            recipientGets={this.state.value2}/>
               <Footer links={this.state.footerLinks} className="media-sm"/>
             </div>
           </div>
