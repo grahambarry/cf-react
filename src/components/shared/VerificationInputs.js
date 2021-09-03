@@ -10,9 +10,11 @@ export default class VerificationInputs extends React.Component {
     this.state = {    
       digits: 6,
       currentIndex: 0,
-      code: []
+      code: [],
+      trigger: false
     }
   }
+  
   render() {
     let numDigits = this.props.digits ? this.props.digits : this.state.digits
     const verificationCode = new Array(numDigits).fill(undefined)
@@ -60,6 +62,7 @@ export default class VerificationInputs extends React.Component {
               inputRefs.push(inputRef);
               return (
                 <input key={index} 
+                       id={'myinput' + index}
                        ref={inputRef}
                        maxLength="1"
                        type="tel"

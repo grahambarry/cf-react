@@ -91,7 +91,7 @@
       border-radius: 4px;
       border: 1px solid $border-gray;
       text-align: center;
-      &:focus {
+      &:focus, &:active {
         border: 1px solid $alt-blue;
         outline: none;
       }
